@@ -28,6 +28,7 @@ var getOnHold = localStorage.getItem("onHold");
 var onHold = getOnHold ? JSON.parse(getOnHold) : [];
 // global varibales
 var newEditCount = 0;
+var editCount = 0;
 // functions
 // this for adding new element
 var addNewNote = function (addNewBtn, indx) {
@@ -140,8 +141,27 @@ var listOurData = function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
             var ourEditBtnIcon = editBtn.firstChild;
-            console.log(ourEditBtnIcon, index);
-            editText(editTextNew, ourEditBtnIcon, 0, index);
+            if (editCount === 0) {
+                ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+                editTextNew.setAttribute("contenteditable", "true");
+                editTextNew.focus();
+                editCount++;
+            }
+            else {
+                editCount = 0;
+                ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+                ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+                editTextNew.removeAttribute("contenteditable");
+                editTextNew.blur();
+                var ourNewText = editTextNew.textContent;
+                console.log(ourNewText);
+                var newOBj = { text: ourNewText };
+                backLog.splice(index, 1);
+                backLog.push(newOBj);
+                localStorage.setItem("backLog", JSON.stringify(backLog));
+                backLog.splice(index, 1);
+                getBackLog;
+            }
         });
         // our delete button function :
         deleteBtn.addEventListener("click", function () {
@@ -178,8 +198,27 @@ var listOurData = function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
             var ourEditBtnIcon = editBtn.firstChild;
-            console.log(ourEditBtnIcon);
-            editText(editTextNew, ourEditBtnIcon, 1);
+            if (editCount === 0) {
+                ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+                editTextNew.setAttribute("contenteditable", "true");
+                editTextNew.focus();
+                editCount++;
+            }
+            else {
+                editCount = 0;
+                ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+                ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+                editTextNew.removeAttribute("contenteditable");
+                editTextNew.blur();
+                var ourNewText = editTextNew.textContent;
+                console.log(ourNewText);
+                var newOBj = { text: ourNewText };
+                backLog.splice(index, 1);
+                backLog.push(newOBj);
+                localStorage.setItem("backLog", JSON.stringify(backLog));
+                backLog.splice(index, 1);
+                getBackLog;
+            }
         });
     });
     complete.forEach(function (completeText, index) {
@@ -211,8 +250,27 @@ var listOurData = function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
             var ourEditBtnIcon = editBtn.firstChild;
-            console.log(ourEditBtnIcon);
-            editText(editTextNew, ourEditBtnIcon, 2);
+            if (editCount === 0) {
+                ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+                editTextNew.setAttribute("contenteditable", "true");
+                editTextNew.focus();
+                editCount++;
+            }
+            else {
+                editCount = 0;
+                ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+                ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+                editTextNew.removeAttribute("contenteditable");
+                editTextNew.blur();
+                var ourNewText = editTextNew.textContent;
+                console.log(ourNewText);
+                var newOBj = { text: ourNewText };
+                backLog.splice(index, 1);
+                backLog.push(newOBj);
+                localStorage.setItem("backLog", JSON.stringify(backLog));
+                backLog.splice(index, 1);
+                getBackLog;
+            }
         });
     });
     onHold.forEach(function (onHoldText, index) {
@@ -243,12 +301,30 @@ var listOurData = function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
             var ourEditBtnIcon = editBtn.firstChild;
-            console.log(ourEditBtnIcon, index);
-            editText(editTextNew, ourEditBtnIcon, 3);
+            if (editCount === 0) {
+                ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+                editTextNew.setAttribute("contenteditable", "true");
+                editTextNew.focus();
+                editCount++;
+            }
+            else {
+                editCount = 0;
+                ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+                ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+                editTextNew.removeAttribute("contenteditable");
+                editTextNew.blur();
+                var ourNewText = editTextNew.textContent;
+                console.log(ourNewText);
+                var newOBj = { text: ourNewText };
+                backLog.splice(index, 1);
+                backLog.push(newOBj);
+                localStorage.setItem("backLog", JSON.stringify(backLog));
+                backLog.splice(index, 1);
+                getBackLog;
+            }
         });
     });
 };
-// our edit text function
 // our delete text function
 // const deleteThisNote = () => {};
 // eventlinsters

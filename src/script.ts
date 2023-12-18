@@ -34,6 +34,7 @@ let onHold = getOnHold ? JSON.parse(getOnHold) : [];
 
 // global varibales
 let newEditCount = 0;
+let editCount = 0;
 
 // functions
 
@@ -163,8 +164,27 @@ const listOurData = () => {
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
-      console.log(ourEditBtnIcon, index);
-      editText(editTextNew, ourEditBtnIcon, 0, index);
+
+      if (editCount === 0) {
+        ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+        editTextNew.setAttribute("contenteditable", "true");
+        editTextNew.focus();
+        editCount++;
+      } else {
+        editCount = 0;
+        ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+        ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+        editTextNew.removeAttribute("contenteditable");
+        editTextNew.blur();
+        let ourNewText = editTextNew.textContent;
+        console.log(ourNewText);
+        let newOBj: any = { text: ourNewText };
+        backLog.splice(index, 1);
+        backLog.push(newOBj);
+        localStorage.setItem("backLog", JSON.stringify(backLog));
+        backLog.splice(index, 1);
+        getBackLog;
+      }
     });
 
     // our delete button function :
@@ -212,8 +232,26 @@ const listOurData = () => {
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
-      console.log(ourEditBtnIcon);
-      editText(editTextNew, ourEditBtnIcon, 1);
+      if (editCount === 0) {
+        ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+        editTextNew.setAttribute("contenteditable", "true");
+        editTextNew.focus();
+        editCount++;
+      } else {
+        editCount = 0;
+        ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+        ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+        editTextNew.removeAttribute("contenteditable");
+        editTextNew.blur();
+        let ourNewText = editTextNew.textContent;
+        console.log(ourNewText);
+        let newOBj: any = { text: ourNewText };
+        backLog.splice(index, 1);
+        backLog.push(newOBj);
+        localStorage.setItem("backLog", JSON.stringify(backLog));
+        backLog.splice(index, 1);
+        getBackLog;
+      }
     });
   });
 
@@ -254,8 +292,26 @@ const listOurData = () => {
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
-      console.log(ourEditBtnIcon);
-      editText(editTextNew, ourEditBtnIcon, 2);
+      if (editCount === 0) {
+        ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+        editTextNew.setAttribute("contenteditable", "true");
+        editTextNew.focus();
+        editCount++;
+      } else {
+        editCount = 0;
+        ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+        ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+        editTextNew.removeAttribute("contenteditable");
+        editTextNew.blur();
+        let ourNewText = editTextNew.textContent;
+        console.log(ourNewText);
+        let newOBj: any = { text: ourNewText };
+        backLog.splice(index, 1);
+        backLog.push(newOBj);
+        localStorage.setItem("backLog", JSON.stringify(backLog));
+        backLog.splice(index, 1);
+        getBackLog;
+      }
     });
   });
 
@@ -294,13 +350,29 @@ const listOurData = () => {
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
-      console.log(ourEditBtnIcon, index);
-      editText(editTextNew, ourEditBtnIcon, 3);
+      if (editCount === 0) {
+        ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+        editTextNew.setAttribute("contenteditable", "true");
+        editTextNew.focus();
+        editCount++;
+      } else {
+        editCount = 0;
+        ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+        ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+        editTextNew.removeAttribute("contenteditable");
+        editTextNew.blur();
+        let ourNewText = editTextNew.textContent;
+        console.log(ourNewText);
+        let newOBj: any = { text: ourNewText };
+        backLog.splice(index, 1);
+        backLog.push(newOBj);
+        localStorage.setItem("backLog", JSON.stringify(backLog));
+        backLog.splice(index, 1);
+        getBackLog;
+      }
     });
   });
 };
-
-// our edit text function
 
 // our delete text function
 // const deleteThisNote = () => {};

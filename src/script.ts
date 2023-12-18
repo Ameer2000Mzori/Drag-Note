@@ -28,7 +28,10 @@ const addNewNote = (addNewBtn, indx) => {
 
   // creating elements dynamcily :
   const newLi = document.createElement("li");
-  newLi.textContent = `${createNewTextObj[indx].text}`;
+
+  const noteText = document.createElement("p");
+  noteText.classList.add("note-Text");
+  noteText.textContent = `${createNewTextObj[indx].text}`;
 
   const buttonsWrap = document.createElement("div");
   buttonsWrap.classList.add("buttons-Wrap");
@@ -47,21 +50,37 @@ const addNewNote = (addNewBtn, indx) => {
   editBtn.appendChild(iconEditBtn);
   buttonsWrap.appendChild(editBtn);
 
-  newLi.setAttribute("contenteditable", "true");
+  newLi.appendChild(noteText);
   newLi.appendChild(buttonsWrap);
   ourListUl.appendChild(newLi);
 
   // our eventlinsters:
   editBtn.addEventListener("click", () => {
-    let editTextNew: any = editBtn.parentElement.parentElement;
-    console.log(editTextNew);
-    // editText(editTextNew);
-    editTextNew.focus();
+    let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
+    let ourEditBtnIcon: any = editBtn.firstChild;
+    console.log(ourEditBtnIcon);
+    editText(editTextNew, ourEditBtnIcon);
   });
 };
 
 // our edit text function
-// const editText = (editTextNew) => {};
+let editCount = 0;
+const editText = (editTextNew, ourEditBtnIcon) => {
+  if (editCount === 0) {
+    ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+    editCount++;
+    editTextNew.setAttribute("contenteditable", "true");
+    editTextNew.focus();
+  } else {
+    ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+    ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+    editCount = 0;
+    editTextNew.removeAttribute("contenteditable");
+    editTextNew.blur();
+    let ourNewText = editTextNew.textContent;
+    console.log(ourNewText);
+  }
+};
 
 // eventlinsters
 addNewBtns.forEach((addNewBtn, indx) => {

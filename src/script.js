@@ -23,7 +23,9 @@ var addNewNote = function (addNewBtn, indx) {
     console.log(ourListUl);
     // creating elements dynamcily :
     var newLi = document.createElement("li");
-    newLi.textContent = "".concat(createNewTextObj[indx].text);
+    var noteText = document.createElement("p");
+    noteText.classList.add("note-Text");
+    noteText.textContent = "".concat(createNewTextObj[indx].text);
     var buttonsWrap = document.createElement("div");
     buttonsWrap.classList.add("buttons-Wrap");
     var deleteBtn = document.createElement("button");
@@ -38,19 +40,37 @@ var addNewNote = function (addNewBtn, indx) {
     iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
     editBtn.appendChild(iconEditBtn);
     buttonsWrap.appendChild(editBtn);
-    newLi.setAttribute("contenteditable", "true");
+    newLi.appendChild(noteText);
     newLi.appendChild(buttonsWrap);
     ourListUl.appendChild(newLi);
     // our eventlinsters:
     editBtn.addEventListener("click", function () {
-        var editTextNew = editBtn.parentElement.parentElement;
-        console.log(editTextNew);
-        // editText(editTextNew);
-        editTextNew.focus();
+        var _a;
+        var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
+        var ourEditBtnIcon = editBtn.firstChild;
+        console.log(ourEditBtnIcon);
+        editText(editTextNew, ourEditBtnIcon);
     });
 };
 // our edit text function
-// const editText = (editTextNew) => {};
+var editCount = 0;
+var editText = function (editTextNew, ourEditBtnIcon) {
+    if (editCount === 0) {
+        ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+        editCount++;
+        editTextNew.setAttribute("contenteditable", "true");
+        editTextNew.focus();
+    }
+    else {
+        ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+        ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+        editCount = 0;
+        editTextNew.removeAttribute("contenteditable");
+        editTextNew.blur();
+        var ourNewText = editTextNew.textContent;
+        console.log(ourNewText);
+    }
+};
 // eventlinsters
 addNewBtns.forEach(function (addNewBtn, indx) {
     addNewBtn.addEventListener("click", function (e) {

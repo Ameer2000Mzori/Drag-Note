@@ -171,6 +171,9 @@ var listOurData = function () {
             });
             localStorage.setItem("backLog", JSON.stringify(backLog));
             UlElementId[0].innerHTML = "";
+            UlElementId[1].innerHTML = "";
+            UlElementId[2].innerHTML = "";
+            UlElementId[3].innerHTML = "";
             listOurData();
         });
     });
@@ -232,7 +235,10 @@ var listOurData = function () {
                 return textNote.text !== deleteText;
             });
             localStorage.setItem("progress", JSON.stringify(progress));
+            UlElementId[0].innerHTML = "";
             UlElementId[1].innerHTML = "";
+            UlElementId[2].innerHTML = "";
+            UlElementId[3].innerHTML = "";
             listOurData();
         });
     });
@@ -294,7 +300,10 @@ var listOurData = function () {
                 return textNote.text !== deleteText;
             });
             localStorage.setItem("complete", JSON.stringify(complete));
+            UlElementId[0].innerHTML = "";
+            UlElementId[1].innerHTML = "";
             UlElementId[2].innerHTML = "";
+            UlElementId[3].innerHTML = "";
             listOurData();
         });
     });
@@ -355,7 +364,10 @@ var listOurData = function () {
                 return textNote.text !== deleteText;
             });
             localStorage.setItem("onHold", JSON.stringify(onHold));
+            UlElementId[0].innerHTML = "";
+            UlElementId[1].innerHTML = "";
             UlElementId[2].innerHTML = "";
+            UlElementId[3].innerHTML = "";
             listOurData();
         });
     });

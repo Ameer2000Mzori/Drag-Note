@@ -252,12 +252,23 @@ const listOurData = () => {
         let ourNewText = editTextNew.textContent;
         console.log(ourNewText);
         let newOBj: any = { text: ourNewText };
-        backLog.splice(index, 1);
-        backLog.push(newOBj);
-        localStorage.setItem("backLog", JSON.stringify(backLog));
-        backLog.splice(index, 1);
-        getBackLog;
+        progress.splice(index, 1);
+        progress.push(newOBj);
+        localStorage.setItem("progress", JSON.stringify(progress));
       }
+    });
+
+    deleteBtn.addEventListener("click", () => {
+      let deleteText: any =
+        editBtn.parentElement.parentElement?.firstChild?.textContent;
+      console.log(deleteText);
+
+      backLog = backLog.filter((textNote) => {
+        return textNote.text !== deleteText;
+      });
+      localStorage.setItem("backLog", JSON.stringify(backLog));
+      UlElementId[0].innerHTML = ``;
+      listOurData();
     });
   });
 
@@ -312,11 +323,9 @@ const listOurData = () => {
         let ourNewText = editTextNew.textContent;
         console.log(ourNewText);
         let newOBj: any = { text: ourNewText };
-        backLog.splice(index, 1);
-        backLog.push(newOBj);
-        localStorage.setItem("backLog", JSON.stringify(backLog));
-        backLog.splice(index, 1);
-        getBackLog;
+        complete.splice(index, 1);
+        complete.push(newOBj);
+        localStorage.setItem("complete", JSON.stringify(complete));
       }
     });
   });
@@ -370,11 +379,9 @@ const listOurData = () => {
         let ourNewText = editTextNew.textContent;
         console.log(ourNewText);
         let newOBj: any = { text: ourNewText };
-        backLog.splice(index, 1);
-        backLog.push(newOBj);
-        localStorage.setItem("backLog", JSON.stringify(backLog));
-        backLog.splice(index, 1);
-        getBackLog;
+        onHold.splice(index, 1);
+        onHold.push(newOBj);
+        localStorage.setItem("onHold", JSON.stringify(onHold));
       }
     });
   });

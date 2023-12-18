@@ -218,12 +218,21 @@ var listOurData = function () {
                 var ourNewText = editTextNew.textContent;
                 console.log(ourNewText);
                 var newOBj = { text: ourNewText };
-                backLog.splice(index, 1);
-                backLog.push(newOBj);
-                localStorage.setItem("backLog", JSON.stringify(backLog));
-                backLog.splice(index, 1);
-                getBackLog;
+                progress.splice(index, 1);
+                progress.push(newOBj);
+                localStorage.setItem("progress", JSON.stringify(progress));
             }
+        });
+        deleteBtn.addEventListener("click", function () {
+            var _a, _b;
+            var deleteText = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+            console.log(deleteText);
+            backLog = backLog.filter(function (textNote) {
+                return textNote.text !== deleteText;
+            });
+            localStorage.setItem("backLog", JSON.stringify(backLog));
+            UlElementId[0].innerHTML = "";
+            listOurData();
         });
     });
     complete.forEach(function (completeText, index) {
@@ -270,11 +279,9 @@ var listOurData = function () {
                 var ourNewText = editTextNew.textContent;
                 console.log(ourNewText);
                 var newOBj = { text: ourNewText };
-                backLog.splice(index, 1);
-                backLog.push(newOBj);
-                localStorage.setItem("backLog", JSON.stringify(backLog));
-                backLog.splice(index, 1);
-                getBackLog;
+                complete.splice(index, 1);
+                complete.push(newOBj);
+                localStorage.setItem("complete", JSON.stringify(complete));
             }
         });
     });
@@ -321,11 +328,9 @@ var listOurData = function () {
                 var ourNewText = editTextNew.textContent;
                 console.log(ourNewText);
                 var newOBj = { text: ourNewText };
-                backLog.splice(index, 1);
-                backLog.push(newOBj);
-                localStorage.setItem("backLog", JSON.stringify(backLog));
-                backLog.splice(index, 1);
-                getBackLog;
+                onHold.splice(index, 1);
+                onHold.push(newOBj);
+                localStorage.setItem("onHold", JSON.stringify(onHold));
             }
         });
     });

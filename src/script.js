@@ -223,15 +223,16 @@ var listOurData = function () {
                 localStorage.setItem("progress", JSON.stringify(progress));
             }
         });
+        // our delete button
         deleteBtn.addEventListener("click", function () {
             var _a, _b;
             var deleteText = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
             console.log(deleteText);
-            backLog = backLog.filter(function (textNote) {
+            progress = progress.filter(function (textNote) {
                 return textNote.text !== deleteText;
             });
-            localStorage.setItem("backLog", JSON.stringify(backLog));
-            UlElementId[0].innerHTML = "";
+            localStorage.setItem("progress", JSON.stringify(progress));
+            UlElementId[1].innerHTML = "";
             listOurData();
         });
     });
@@ -284,6 +285,18 @@ var listOurData = function () {
                 localStorage.setItem("complete", JSON.stringify(complete));
             }
         });
+        // our delete button
+        deleteBtn.addEventListener("click", function () {
+            var _a, _b;
+            var deleteText = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+            console.log(deleteText);
+            complete = complete.filter(function (textNote) {
+                return textNote.text !== deleteText;
+            });
+            localStorage.setItem("complete", JSON.stringify(complete));
+            UlElementId[2].innerHTML = "";
+            listOurData();
+        });
     });
     onHold.forEach(function (onHoldText, index) {
         var newLi = document.createElement("li");
@@ -332,6 +345,18 @@ var listOurData = function () {
                 onHold.push(newOBj);
                 localStorage.setItem("onHold", JSON.stringify(onHold));
             }
+        });
+        // our delete button
+        deleteBtn.addEventListener("click", function () {
+            var _a, _b;
+            var deleteText = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+            console.log(deleteText);
+            onHold = onHold.filter(function (textNote) {
+                return textNote.text !== deleteText;
+            });
+            localStorage.setItem("onHold", JSON.stringify(onHold));
+            UlElementId[2].innerHTML = "";
+            listOurData();
         });
     });
 };

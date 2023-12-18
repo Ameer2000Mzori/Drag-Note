@@ -258,16 +258,17 @@ const listOurData = () => {
       }
     });
 
+    // our delete button
     deleteBtn.addEventListener("click", () => {
       let deleteText: any =
         editBtn.parentElement.parentElement?.firstChild?.textContent;
       console.log(deleteText);
 
-      backLog = backLog.filter((textNote) => {
+      progress = progress.filter((textNote) => {
         return textNote.text !== deleteText;
       });
-      localStorage.setItem("backLog", JSON.stringify(backLog));
-      UlElementId[0].innerHTML = ``;
+      localStorage.setItem("progress", JSON.stringify(progress));
+      UlElementId[1].innerHTML = ``;
       listOurData();
     });
   });
@@ -328,6 +329,20 @@ const listOurData = () => {
         localStorage.setItem("complete", JSON.stringify(complete));
       }
     });
+
+    // our delete button
+    deleteBtn.addEventListener("click", () => {
+      let deleteText: any =
+        editBtn.parentElement.parentElement?.firstChild?.textContent;
+      console.log(deleteText);
+
+      complete = complete.filter((textNote) => {
+        return textNote.text !== deleteText;
+      });
+      localStorage.setItem("complete", JSON.stringify(complete));
+      UlElementId[2].innerHTML = ``;
+      listOurData();
+    });
   });
 
   onHold.forEach((onHoldText, index) => {
@@ -383,6 +398,20 @@ const listOurData = () => {
         onHold.push(newOBj);
         localStorage.setItem("onHold", JSON.stringify(onHold));
       }
+    });
+
+    // our delete button
+    deleteBtn.addEventListener("click", () => {
+      let deleteText: any =
+        editBtn.parentElement.parentElement?.firstChild?.textContent;
+      console.log(deleteText);
+
+      onHold = onHold.filter((textNote) => {
+        return textNote.text !== deleteText;
+      });
+      localStorage.setItem("onHold", JSON.stringify(onHold));
+      UlElementId[2].innerHTML = ``;
+      listOurData();
     });
   });
 };

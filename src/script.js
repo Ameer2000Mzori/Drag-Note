@@ -107,6 +107,8 @@ var listOurData = function () {
         newLi.appendChild(buttonsWrap);
         UlElementId[0].appendChild(newLi);
         console.log(backLogText.text);
+        // our eventlisnters
+        // edit button
         editBtn.addEventListener("click", function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
@@ -138,6 +140,8 @@ var listOurData = function () {
         newLi.appendChild(buttonsWrap);
         UlElementId[1].appendChild(newLi);
         console.log(progressText.text);
+        // our eventlisnters
+        // edit button
         editBtn.addEventListener("click", function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
@@ -169,6 +173,8 @@ var listOurData = function () {
         newLi.appendChild(buttonsWrap);
         UlElementId[2].appendChild(newLi);
         console.log(completeText.text);
+        // our eventlisnters
+        // edit button
         editBtn.addEventListener("click", function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;

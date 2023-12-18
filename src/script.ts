@@ -129,6 +129,10 @@ const listOurData = () => {
 
     console.log(backLogText.text);
 
+    // our eventlisnters
+
+    // edit button
+
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
@@ -168,6 +172,10 @@ const listOurData = () => {
 
     console.log(progressText.text);
 
+    // our eventlisnters
+
+    // edit button
+
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
@@ -205,6 +213,10 @@ const listOurData = () => {
 
     UlElementId[2].appendChild(newLi);
     console.log(completeText.text);
+
+    // our eventlisnters
+
+    // edit button
 
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;

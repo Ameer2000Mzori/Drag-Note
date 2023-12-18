@@ -151,4 +151,42 @@ body {
   transform: scale(0.9);
 }
 
+@media screen and (max-width: 1100px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+    background-image: url(https://images.unsplash.com/photo-1465572089651-8fde36c892dd?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: clamp(500px, 100%, 10000px);
+  }
+  .header .head-Wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    height: 1000px;
+    height: clamp(500px, 100%, 10000px);
+    width: 350px;
+    border-radius: 2rem;
+  }
+  .header .head-Wrap #note-Box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 500px;
+    width: 390px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

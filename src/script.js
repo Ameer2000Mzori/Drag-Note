@@ -1,5 +1,6 @@
 // selecting our elements
 var addNewBtns = document.querySelectorAll("#add-New-Btn-Id");
+var UlElementId = document.querySelectorAll(".ul-Element-Id");
 // our data objects for our each card
 var createNewTextObj = [
     {
@@ -84,16 +85,100 @@ var addNewNote = function (addNewBtn, indx) {
 // when loaded our data should apear on the screen :
 var listOurData = function () {
     backLog.forEach(function (backLogText) {
+        var newLi = document.createElement("li");
+        var noteText = document.createElement("p");
+        noteText.classList.add("note-Text");
+        noteText.textContent = "".concat(backLogText.text);
+        var buttonsWrap = document.createElement("div");
+        buttonsWrap.classList.add("buttons-Wrap");
+        var deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("dele-Btn");
+        var iconDeleBtn = document.createElement("i");
+        iconDeleBtn.classList.add("fa-solid", "fa-trash");
+        deleteBtn.appendChild(iconDeleBtn);
+        buttonsWrap.appendChild(deleteBtn);
+        var editBtn = document.createElement("button");
+        editBtn.classList.add("edit-Btn");
+        var iconEditBtn = document.createElement("i");
+        iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
+        editBtn.appendChild(iconEditBtn);
+        buttonsWrap.appendChild(editBtn);
+        newLi.appendChild(noteText);
+        newLi.appendChild(buttonsWrap);
+        UlElementId[0].appendChild(newLi);
         console.log(backLogText.text);
     });
-    progress.forEach(function (backLogText) {
-        console.log(backLogText.text);
+    progress.forEach(function (progressText) {
+        var newLi = document.createElement("li");
+        var noteText = document.createElement("p");
+        noteText.classList.add("note-Text");
+        noteText.textContent = "".concat(progressText.text);
+        var buttonsWrap = document.createElement("div");
+        buttonsWrap.classList.add("buttons-Wrap");
+        var deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("dele-Btn");
+        var iconDeleBtn = document.createElement("i");
+        iconDeleBtn.classList.add("fa-solid", "fa-trash");
+        deleteBtn.appendChild(iconDeleBtn);
+        buttonsWrap.appendChild(deleteBtn);
+        var editBtn = document.createElement("button");
+        editBtn.classList.add("edit-Btn");
+        var iconEditBtn = document.createElement("i");
+        iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
+        editBtn.appendChild(iconEditBtn);
+        buttonsWrap.appendChild(editBtn);
+        newLi.appendChild(noteText);
+        newLi.appendChild(buttonsWrap);
+        UlElementId[1].appendChild(newLi);
+        console.log(progressText.text);
     });
-    complete.forEach(function (backLogText) {
-        console.log(backLogText.text);
+    complete.forEach(function (completeText) {
+        var newLi = document.createElement("li");
+        var noteText = document.createElement("p");
+        noteText.classList.add("note-Text");
+        noteText.textContent = "".concat(completeText.text);
+        var buttonsWrap = document.createElement("div");
+        buttonsWrap.classList.add("buttons-Wrap");
+        var deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("dele-Btn");
+        var iconDeleBtn = document.createElement("i");
+        iconDeleBtn.classList.add("fa-solid", "fa-trash");
+        deleteBtn.appendChild(iconDeleBtn);
+        buttonsWrap.appendChild(deleteBtn);
+        var editBtn = document.createElement("button");
+        editBtn.classList.add("edit-Btn");
+        var iconEditBtn = document.createElement("i");
+        iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
+        editBtn.appendChild(iconEditBtn);
+        buttonsWrap.appendChild(editBtn);
+        newLi.appendChild(noteText);
+        newLi.appendChild(buttonsWrap);
+        UlElementId[2].appendChild(newLi);
+        console.log(completeText.text);
     });
-    onHold.forEach(function (backLogText) {
-        console.log(backLogText.text);
+    onHold.forEach(function (onHoldText) {
+        var newLi = document.createElement("li");
+        var noteText = document.createElement("p");
+        noteText.classList.add("note-Text");
+        noteText.textContent = "".concat(onHoldText.text);
+        var buttonsWrap = document.createElement("div");
+        buttonsWrap.classList.add("buttons-Wrap");
+        var deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("dele-Btn");
+        var iconDeleBtn = document.createElement("i");
+        iconDeleBtn.classList.add("fa-solid", "fa-trash");
+        deleteBtn.appendChild(iconDeleBtn);
+        buttonsWrap.appendChild(deleteBtn);
+        var editBtn = document.createElement("button");
+        editBtn.classList.add("edit-Btn");
+        var iconEditBtn = document.createElement("i");
+        iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
+        editBtn.appendChild(iconEditBtn);
+        buttonsWrap.appendChild(editBtn);
+        newLi.appendChild(noteText);
+        newLi.appendChild(buttonsWrap);
+        UlElementId[3].appendChild(newLi);
+        console.log(onHoldText.text);
     });
 };
 // our edit text function
@@ -133,7 +218,4 @@ addNewBtns.forEach(function (addNewBtn, indx) {
         addNewNote(addNewBtn, indx);
     });
 });
-// our on load event lisnter :
-window.addEventListener("load", function () {
-    listOurData();
-});
+listOurData();

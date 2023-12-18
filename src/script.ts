@@ -29,7 +29,7 @@ let progress = [
     text: "20 projects",
   },
 ];
-let Complete = [
+let complete = [
   {
     text: "50 projects",
   },
@@ -96,6 +96,22 @@ const addNewNote = (addNewBtn, indx) => {
   });
 };
 
+// when loaded our data should apear on the screen :
+const listOurData = () => {
+  backLog.forEach((backLogText) => {
+    console.log(backLogText.text);
+  });
+  progress.forEach((backLogText) => {
+    console.log(backLogText.text);
+  });
+  complete.forEach((backLogText) => {
+    console.log(backLogText.text);
+  });
+  onHold.forEach((backLogText) => {
+    console.log(backLogText.text);
+  });
+};
+
 // our edit text function
 let editCount = 0;
 const editText = (editTextNew, ourEditBtnIcon, indx) => {
@@ -129,4 +145,9 @@ addNewBtns.forEach((addNewBtn, indx) => {
   addNewBtn.addEventListener("click", (e) => {
     addNewNote(addNewBtn, indx);
   });
+});
+
+// our on load event lisnter :
+window.addEventListener("load", () => {
+  listOurData();
 });

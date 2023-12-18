@@ -26,7 +26,7 @@ var progress = [
         text: "20 projects",
     },
 ];
-var Complete = [
+var complete = [
     {
         text: "50 projects",
     },
@@ -81,6 +81,21 @@ var addNewNote = function (addNewBtn, indx) {
         }
     });
 };
+// when loaded our data should apear on the screen :
+var listOurData = function () {
+    backLog.forEach(function (backLogText) {
+        console.log(backLogText.text);
+    });
+    progress.forEach(function (backLogText) {
+        console.log(backLogText.text);
+    });
+    complete.forEach(function (backLogText) {
+        console.log(backLogText.text);
+    });
+    onHold.forEach(function (backLogText) {
+        console.log(backLogText.text);
+    });
+};
 // our edit text function
 var editCount = 0;
 var editText = function (editTextNew, ourEditBtnIcon, indx) {
@@ -117,4 +132,8 @@ addNewBtns.forEach(function (addNewBtn, indx) {
     addNewBtn.addEventListener("click", function (e) {
         addNewNote(addNewBtn, indx);
     });
+});
+// our on load event lisnter :
+window.addEventListener("load", function () {
+    listOurData();
 });

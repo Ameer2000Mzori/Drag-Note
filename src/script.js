@@ -20,7 +20,7 @@ var createNewTextObj = [
 // this for adding new element
 var addNewNote = function (addNewBtn, indx) {
     var ourListUl = addNewBtn.parentElement.parentElement.children[1].children[0];
-    console.log(ourListUl);
+    console.log(ourListUl, indx);
     // creating elements dynamcily :
     var newLi = document.createElement("li");
     var noteText = document.createElement("p");
@@ -50,7 +50,7 @@ var addNewNote = function (addNewBtn, indx) {
         var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
         var ourEditBtnIcon = editBtn.firstChild;
         console.log(ourEditBtnIcon);
-        editText(editTextNew, ourEditBtnIcon);
+        editText(editTextNew, ourEditBtnIcon, indx);
     });
     // delete btn
     deleteBtn.addEventListener("click", function () {
@@ -62,7 +62,7 @@ var addNewNote = function (addNewBtn, indx) {
 };
 // our edit text function
 var editCount = 0;
-var editText = function (editTextNew, ourEditBtnIcon) {
+var editText = function (editTextNew, ourEditBtnIcon, indx) {
     if (editCount === 0) {
         ourEditBtnIcon.classList.add("fa-solid", "fa-check");
         editCount++;
@@ -77,6 +77,18 @@ var editText = function (editTextNew, ourEditBtnIcon) {
         editTextNew.blur();
         var ourNewText = editTextNew.textContent;
         console.log(ourNewText);
+        if (indx === 0) {
+            console.log("Black Log");
+        }
+        else if (indx === 1) {
+            console.log("in Progress");
+        }
+        else if (indx === 2) {
+            console.log("Complete");
+        }
+        else if (indx === 3) {
+            console.log("On Hold");
+        }
     }
 };
 // eventlinsters

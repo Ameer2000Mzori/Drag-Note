@@ -24,7 +24,7 @@ let createNewTextObj = [
 // this for adding new element
 const addNewNote = (addNewBtn, indx) => {
   let ourListUl = addNewBtn.parentElement.parentElement.children[1].children[0];
-  console.log(ourListUl);
+  console.log(ourListUl, indx);
 
   // creating elements dynamcily :
   const newLi = document.createElement("li");
@@ -61,7 +61,7 @@ const addNewNote = (addNewBtn, indx) => {
     let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
     let ourEditBtnIcon: any = editBtn.firstChild;
     console.log(ourEditBtnIcon);
-    editText(editTextNew, ourEditBtnIcon);
+    editText(editTextNew, ourEditBtnIcon, indx);
   });
 
   // delete btn
@@ -75,7 +75,7 @@ const addNewNote = (addNewBtn, indx) => {
 
 // our edit text function
 let editCount = 0;
-const editText = (editTextNew, ourEditBtnIcon) => {
+const editText = (editTextNew, ourEditBtnIcon, indx) => {
   if (editCount === 0) {
     ourEditBtnIcon.classList.add("fa-solid", "fa-check");
     editCount++;
@@ -89,6 +89,15 @@ const editText = (editTextNew, ourEditBtnIcon) => {
     editTextNew.blur();
     let ourNewText = editTextNew.textContent;
     console.log(ourNewText);
+    if (indx === 0) {
+      console.log("Black Log");
+    } else if (indx === 1) {
+      console.log("in Progress");
+    } else if (indx === 2) {
+      console.log("Complete");
+    } else if (indx === 3) {
+      console.log("On Hold");
+    }
   }
 };
 

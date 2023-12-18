@@ -55,11 +55,21 @@ const addNewNote = (addNewBtn, indx) => {
   ourListUl.appendChild(newLi);
 
   // our eventlinsters:
+
+  // edit btn
   editBtn.addEventListener("click", () => {
     let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
     let ourEditBtnIcon: any = editBtn.firstChild;
     console.log(ourEditBtnIcon);
     editText(editTextNew, ourEditBtnIcon);
+  });
+
+  // delete btn
+  deleteBtn.addEventListener("click", () => {
+    if (newLi) {
+      newLi.remove();
+      console.log(ourListUl);
+    }
   });
 };
 
@@ -88,17 +98,3 @@ addNewBtns.forEach((addNewBtn, indx) => {
     addNewNote(addNewBtn, indx);
   });
 });
-
-// our html loop up :
-
-// <li>
-//   dance
-//   <div class="buttons-Wrap">
-//     <button class="dele-Btn">
-//       <i class="fa-solid fa-trash"></i>
-//     </button>
-//     <button class="edit-Btn">
-//       <i class="fa-regular fa-pen-to-square"></i>
-//     </button>
-//   </div>
-// </li>;

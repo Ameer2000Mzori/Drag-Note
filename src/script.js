@@ -17,27 +17,17 @@ var createNewTextObj = [
     },
 ];
 // our saved data objects :
-var backLog = [
-    {
-        text: "deit",
-    },
-];
-var progress = [
-    {
-        text: "20 projects",
-    },
-];
-var complete = [
-    {
-        text: "50 projects",
-    },
-];
-var onHold = [
-    {
-        text: "going out",
-    },
-];
+// get our data from local storage if there is :
+var getBackLog = localStorage.getItem("backLog");
+var backLog = getBackLog ? JSON.parse(getBackLog) : [];
+var getProgress = localStorage.getItem("progress");
+var progress = getProgress ? JSON.parse(getProgress) : [];
+var getComplete = localStorage.getItem("complete");
+var complete = getComplete ? JSON.parse(getComplete) : [];
+var getOnHold = localStorage.getItem("onHold");
+var onHold = getOnHold ? JSON.parse(getOnHold) : [];
 // global varibales
+var newEditCount = 0;
 // functions
 // this for adding new element
 var addNewNote = function (addNewBtn, indx) {
@@ -71,8 +61,45 @@ var addNewNote = function (addNewBtn, indx) {
         var _a;
         var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
         var ourEditBtnIcon = editBtn.firstChild;
-        console.log(ourEditBtnIcon);
-        editText(editTextNew, ourEditBtnIcon, indx);
+        // console.log(ourEditBtnIcon);
+        if (newEditCount === 0) {
+            ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+            newEditCount++;
+            editTextNew.setAttribute("contenteditable", "true");
+            editTextNew.focus();
+        }
+        else {
+            ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+            ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+            newEditCount = 0;
+            editTextNew.removeAttribute("contenteditable");
+            editTextNew.blur();
+            var ourNewText = editTextNew.textContent;
+            console.log(ourNewText);
+            if (indx === 0) {
+                var newOBj = { text: ourNewText };
+                backLog.push(newOBj);
+                localStorage.setItem("backLog", JSON.stringify(backLog));
+            }
+            else if (indx === 1) {
+                var newOBj = { text: ourNewText };
+                progress.push(newOBj);
+                console.log(progress);
+                localStorage.setItem("progress", JSON.stringify(progress));
+            }
+            else if (indx === 2) {
+                var newOBj = { text: ourNewText };
+                complete.push(newOBj);
+                console.log(complete);
+                localStorage.setItem("complete", JSON.stringify(complete));
+            }
+            else if (indx === 3) {
+                var newOBj = { text: ourNewText };
+                onHold.push(newOBj);
+                console.log(onHold);
+                localStorage.setItem("onHold", JSON.stringify(onHold));
+            }
+        }
     });
     // delete btn
     deleteBtn.addEventListener("click", function () {
@@ -113,8 +140,8 @@ var listOurData = function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
             var ourEditBtnIcon = editBtn.firstChild;
-            console.log(ourEditBtnIcon);
-            editText(editTextNew, ourEditBtnIcon, 0);
+            console.log(ourEditBtnIcon, index);
+            editText(editTextNew, ourEditBtnIcon, 0, index);
         });
     });
     progress.forEach(function (progressText, index) {
@@ -183,7 +210,7 @@ var listOurData = function () {
             editText(editTextNew, ourEditBtnIcon, 2);
         });
     });
-    onHold.forEach(function (onHoldText, indx) {
+    onHold.forEach(function (onHoldText, index) {
         var newLi = document.createElement("li");
         var noteText = document.createElement("p");
         noteText.classList.add("note-Text");
@@ -211,14 +238,14 @@ var listOurData = function () {
             var _a;
             var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
             var ourEditBtnIcon = editBtn.firstChild;
-            console.log(ourEditBtnIcon);
+            console.log(ourEditBtnIcon, index);
             editText(editTextNew, ourEditBtnIcon, 3);
         });
     });
 };
 // our edit text function
 var editCount = 0;
-var editText = function (editTextNew, ourEditBtnIcon, indx) {
+var editText = function (editTextNew, ourEditBtnIcon, indx, index) {
     if (editCount === 0) {
         ourEditBtnIcon.classList.add("fa-solid", "fa-check");
         editCount++;
@@ -234,16 +261,32 @@ var editText = function (editTextNew, ourEditBtnIcon, indx) {
         var ourNewText = editTextNew.textContent;
         console.log(ourNewText);
         if (indx === 0) {
-            console.log("Black Log");
+            var newOBj = { text: ourNewText };
+            backLog.splice(index, 1);
+            backLog.push(newOBj);
+            console.log(backLog);
+            localStorage.setItem("backLog", JSON.stringify(backLog));
         }
         else if (indx === 1) {
-            console.log("in Progress");
+            var newOBj = { text: ourNewText };
+            progress.push(newOBj);
+            progress.splice(index, 1);
+            console.log(progress);
+            localStorage.setItem("progress", JSON.stringify(progress));
         }
         else if (indx === 2) {
-            console.log("Complete");
+            var newOBj = { text: ourNewText };
+            complete.push(newOBj);
+            complete.splice(index, 1);
+            console.log(complete);
+            localStorage.setItem("complete", JSON.stringify(complete));
         }
         else if (indx === 3) {
-            console.log("On Hold");
+            var newOBj = { text: ourNewText };
+            onHold.push(newOBj);
+            onHold.splice(index, 1);
+            console.log(onHold);
+            localStorage.setItem("onHold", JSON.stringify(onHold));
         }
     }
 };

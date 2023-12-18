@@ -19,28 +19,21 @@ let createNewTextObj = [
 
 // our saved data objects :
 
-let backLog = [
-  {
-    text: "deit",
-  },
-];
-let progress = [
-  {
-    text: "20 projects",
-  },
-];
-let complete = [
-  {
-    text: "50 projects",
-  },
-];
-let onHold = [
-  {
-    text: "going out",
-  },
-];
+// get our data from local storage if there is :
+let getBackLog = localStorage.getItem("backLog");
+let backLog = getBackLog ? JSON.parse(getBackLog) : [];
+
+let getProgress = localStorage.getItem("progress");
+let progress = getProgress ? JSON.parse(getProgress) : [];
+
+let getComplete = localStorage.getItem("complete");
+let complete = getComplete ? JSON.parse(getComplete) : [];
+
+let getOnHold = localStorage.getItem("onHold");
+let onHold = getOnHold ? JSON.parse(getOnHold) : [];
 
 // global varibales
+let newEditCount = 0;
 
 // functions
 
@@ -83,8 +76,42 @@ const addNewNote = (addNewBtn, indx) => {
   editBtn.addEventListener("click", () => {
     let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
     let ourEditBtnIcon: any = editBtn.firstChild;
-    console.log(ourEditBtnIcon);
-    editText(editTextNew, ourEditBtnIcon, indx);
+    // console.log(ourEditBtnIcon);
+
+    if (newEditCount === 0) {
+      ourEditBtnIcon.classList.add("fa-solid", "fa-check");
+      newEditCount++;
+      editTextNew.setAttribute("contenteditable", "true");
+      editTextNew.focus();
+    } else {
+      ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
+      ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
+      newEditCount = 0;
+      editTextNew.removeAttribute("contenteditable");
+      editTextNew.blur();
+      let ourNewText = editTextNew.textContent;
+      console.log(ourNewText);
+      if (indx === 0) {
+        let newOBj: any = { text: ourNewText };
+        backLog.push(newOBj);
+        localStorage.setItem("backLog", JSON.stringify(backLog));
+      } else if (indx === 1) {
+        let newOBj: any = { text: ourNewText };
+        progress.push(newOBj);
+        console.log(progress);
+        localStorage.setItem("progress", JSON.stringify(progress));
+      } else if (indx === 2) {
+        let newOBj: any = { text: ourNewText };
+        complete.push(newOBj);
+        console.log(complete);
+        localStorage.setItem("complete", JSON.stringify(complete));
+      } else if (indx === 3) {
+        let newOBj: any = { text: ourNewText };
+        onHold.push(newOBj);
+        console.log(onHold);
+        localStorage.setItem("onHold", JSON.stringify(onHold));
+      }
+    }
   });
 
   // delete btn
@@ -136,8 +163,8 @@ const listOurData = () => {
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
-      console.log(ourEditBtnIcon);
-      editText(editTextNew, ourEditBtnIcon, 0);
+      console.log(ourEditBtnIcon, index);
+      editText(editTextNew, ourEditBtnIcon, 0, index);
     });
   });
 
@@ -226,7 +253,7 @@ const listOurData = () => {
     });
   });
 
-  onHold.forEach((onHoldText, indx) => {
+  onHold.forEach((onHoldText, index) => {
     const newLi = document.createElement("li");
 
     const noteText = document.createElement("p");
@@ -261,7 +288,7 @@ const listOurData = () => {
     editBtn.addEventListener("click", () => {
       let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
       let ourEditBtnIcon: any = editBtn.firstChild;
-      console.log(ourEditBtnIcon);
+      console.log(ourEditBtnIcon, index);
       editText(editTextNew, ourEditBtnIcon, 3);
     });
   });
@@ -269,7 +296,7 @@ const listOurData = () => {
 
 // our edit text function
 let editCount = 0;
-const editText = (editTextNew, ourEditBtnIcon, indx) => {
+const editText = (editTextNew, ourEditBtnIcon, indx, index) => {
   if (editCount === 0) {
     ourEditBtnIcon.classList.add("fa-solid", "fa-check");
     editCount++;
@@ -284,13 +311,29 @@ const editText = (editTextNew, ourEditBtnIcon, indx) => {
     let ourNewText = editTextNew.textContent;
     console.log(ourNewText);
     if (indx === 0) {
-      console.log("Black Log");
+      let newOBj: any = { text: ourNewText };
+      backLog.splice(index, 1);
+      backLog.push(newOBj);
+      console.log(backLog);
+      localStorage.setItem("backLog", JSON.stringify(backLog));
     } else if (indx === 1) {
-      console.log("in Progress");
+      let newOBj: any = { text: ourNewText };
+      progress.push(newOBj);
+      progress.splice(index, 1);
+      console.log(progress);
+      localStorage.setItem("progress", JSON.stringify(progress));
     } else if (indx === 2) {
-      console.log("Complete");
+      let newOBj: any = { text: ourNewText };
+      complete.push(newOBj);
+      complete.splice(index, 1);
+      console.log(complete);
+      localStorage.setItem("complete", JSON.stringify(complete));
     } else if (indx === 3) {
-      console.log("On Hold");
+      let newOBj: any = { text: ourNewText };
+      onHold.push(newOBj);
+      onHold.splice(index, 1);
+      console.log(onHold);
+      localStorage.setItem("onHold", JSON.stringify(onHold));
     }
   }
 };

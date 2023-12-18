@@ -91,13 +91,14 @@ body {
   flex-direction: column;
   text-align: center;
   align-items: center;
+  height: 100%;
 }
 
 .header .head-Wrap #note-Box .todo-Lists ul li {
   margin: 5px;
   padding: 1rem;
   width: 80%;
-  height: 20px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -107,8 +108,8 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 17px;
   overflow-x: auto;
-  text-align: center;
-  align-items: center;
+  text-align: start;
+  align-items: start;
 }
 
 .header .head-Wrap #note-Box .todo-Lists ul li .note-Text {

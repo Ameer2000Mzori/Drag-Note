@@ -84,7 +84,7 @@ var addNewNote = function (addNewBtn, indx) {
 };
 // when loaded our data should apear on the screen :
 var listOurData = function () {
-    backLog.forEach(function (backLogText) {
+    backLog.forEach(function (backLogText, index) {
         var newLi = document.createElement("li");
         var noteText = document.createElement("p");
         noteText.classList.add("note-Text");
@@ -107,8 +107,15 @@ var listOurData = function () {
         newLi.appendChild(buttonsWrap);
         UlElementId[0].appendChild(newLi);
         console.log(backLogText.text);
+        editBtn.addEventListener("click", function () {
+            var _a;
+            var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
+            var ourEditBtnIcon = editBtn.firstChild;
+            console.log(ourEditBtnIcon);
+            editText(editTextNew, ourEditBtnIcon, 0);
+        });
     });
-    progress.forEach(function (progressText) {
+    progress.forEach(function (progressText, index) {
         var newLi = document.createElement("li");
         var noteText = document.createElement("p");
         noteText.classList.add("note-Text");
@@ -131,8 +138,15 @@ var listOurData = function () {
         newLi.appendChild(buttonsWrap);
         UlElementId[1].appendChild(newLi);
         console.log(progressText.text);
+        editBtn.addEventListener("click", function () {
+            var _a;
+            var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
+            var ourEditBtnIcon = editBtn.firstChild;
+            console.log(ourEditBtnIcon);
+            editText(editTextNew, ourEditBtnIcon, 1);
+        });
     });
-    complete.forEach(function (completeText) {
+    complete.forEach(function (completeText, index) {
         var newLi = document.createElement("li");
         var noteText = document.createElement("p");
         noteText.classList.add("note-Text");
@@ -155,8 +169,15 @@ var listOurData = function () {
         newLi.appendChild(buttonsWrap);
         UlElementId[2].appendChild(newLi);
         console.log(completeText.text);
+        editBtn.addEventListener("click", function () {
+            var _a;
+            var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
+            var ourEditBtnIcon = editBtn.firstChild;
+            console.log(ourEditBtnIcon);
+            editText(editTextNew, ourEditBtnIcon, 2);
+        });
     });
-    onHold.forEach(function (onHoldText) {
+    onHold.forEach(function (onHoldText, indx) {
         var newLi = document.createElement("li");
         var noteText = document.createElement("p");
         noteText.classList.add("note-Text");
@@ -178,7 +199,15 @@ var listOurData = function () {
         newLi.appendChild(noteText);
         newLi.appendChild(buttonsWrap);
         UlElementId[3].appendChild(newLi);
-        console.log(onHoldText.text);
+        // our eventlinsters:
+        // edit btn
+        editBtn.addEventListener("click", function () {
+            var _a;
+            var editTextNew = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild;
+            var ourEditBtnIcon = editBtn.firstChild;
+            console.log(ourEditBtnIcon);
+            editText(editTextNew, ourEditBtnIcon, 3);
+        });
     });
 };
 // our edit text function

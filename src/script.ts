@@ -98,7 +98,7 @@ const addNewNote = (addNewBtn, indx) => {
 
 // when loaded our data should apear on the screen :
 const listOurData = () => {
-  backLog.forEach((backLogText) => {
+  backLog.forEach((backLogText, index) => {
     const newLi = document.createElement("li");
 
     const noteText = document.createElement("p");
@@ -128,9 +128,16 @@ const listOurData = () => {
     UlElementId[0].appendChild(newLi);
 
     console.log(backLogText.text);
+
+    editBtn.addEventListener("click", () => {
+      let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
+      let ourEditBtnIcon: any = editBtn.firstChild;
+      console.log(ourEditBtnIcon);
+      editText(editTextNew, ourEditBtnIcon, 0);
+    });
   });
 
-  progress.forEach((progressText) => {
+  progress.forEach((progressText, index) => {
     const newLi = document.createElement("li");
 
     const noteText = document.createElement("p");
@@ -160,9 +167,16 @@ const listOurData = () => {
     UlElementId[1].appendChild(newLi);
 
     console.log(progressText.text);
+
+    editBtn.addEventListener("click", () => {
+      let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
+      let ourEditBtnIcon: any = editBtn.firstChild;
+      console.log(ourEditBtnIcon);
+      editText(editTextNew, ourEditBtnIcon, 1);
+    });
   });
 
-  complete.forEach((completeText) => {
+  complete.forEach((completeText, index) => {
     const newLi = document.createElement("li");
 
     const noteText = document.createElement("p");
@@ -191,9 +205,16 @@ const listOurData = () => {
 
     UlElementId[2].appendChild(newLi);
     console.log(completeText.text);
+
+    editBtn.addEventListener("click", () => {
+      let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
+      let ourEditBtnIcon: any = editBtn.firstChild;
+      console.log(ourEditBtnIcon);
+      editText(editTextNew, ourEditBtnIcon, 2);
+    });
   });
 
-  onHold.forEach((onHoldText) => {
+  onHold.forEach((onHoldText, indx) => {
     const newLi = document.createElement("li");
 
     const noteText = document.createElement("p");
@@ -221,7 +242,16 @@ const listOurData = () => {
     newLi.appendChild(buttonsWrap);
 
     UlElementId[3].appendChild(newLi);
-    console.log(onHoldText.text);
+
+    // our eventlinsters:
+
+    // edit btn
+    editBtn.addEventListener("click", () => {
+      let editTextNew: any = editBtn.parentElement.parentElement?.firstChild;
+      let ourEditBtnIcon: any = editBtn.firstChild;
+      console.log(ourEditBtnIcon);
+      editText(editTextNew, ourEditBtnIcon, 3);
+    });
   });
 };
 

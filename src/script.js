@@ -131,8 +131,6 @@ var listOurData = function () {
         iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
         editBtn.appendChild(iconEditBtn);
         buttonsWrap.appendChild(editBtn);
-        newLi.appendChild(noteText);
-        newLi.appendChild(buttonsWrap);
         UlElementId[0].appendChild(newLi);
         console.log(backLogText.text);
         // our eventlisnters

@@ -209,6 +209,15 @@ const listOurData = () => {
       UlElementId[3].innerHTML = ``;
       listOurData();
     });
+
+    // our move button
+    moveBtn.addEventListener("click", () => {
+      let moveTextNote: any =
+        editBtn.parentElement.parentElement?.firstChild?.textContent;
+      console.log(moveTextNote);
+
+      // creating our list of move names
+    });
   });
 
   progress.forEach((progressText, index) => {

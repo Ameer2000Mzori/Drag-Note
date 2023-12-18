@@ -107,6 +107,15 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 17px;
   overflow-x: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.header .head-Wrap #note-Box .todo-Lists ul li .note-Text {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  width: 70%;
 }
 
 .header .head-Wrap #note-Box .todo-Lists ul li .buttons-Wrap {
@@ -126,7 +135,7 @@ body {
   margin: 2px;
 }
 
-.header .head-Wrap #note-Box .todo-Lists ul li .buttons-Wrap button li {
+.header .head-Wrap #note-Box .todo-Lists ul li .buttons-Wrap button i {
   color: black;
 }
 

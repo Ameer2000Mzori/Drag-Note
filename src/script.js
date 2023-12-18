@@ -17,6 +17,7 @@ var createNewTextObj = [
 ];
 // global varibales
 // functions
+// this for adding new element
 var addNewNote = function (addNewBtn, indx) {
     var ourListUl = addNewBtn.parentElement.parentElement.children[1].children[0];
     console.log(ourListUl);
@@ -37,9 +38,19 @@ var addNewNote = function (addNewBtn, indx) {
     iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
     editBtn.appendChild(iconEditBtn);
     buttonsWrap.appendChild(editBtn);
+    newLi.setAttribute("contenteditable", "true");
     newLi.appendChild(buttonsWrap);
     ourListUl.appendChild(newLi);
+    // our eventlinsters:
+    editBtn.addEventListener("click", function () {
+        var editTextNew = editBtn.parentElement.parentElement;
+        console.log(editTextNew);
+        // editText(editTextNew);
+        editTextNew.focus();
+    });
 };
+// our edit text function
+// const editText = (editTextNew) => {};
 // eventlinsters
 addNewBtns.forEach(function (addNewBtn, indx) {
     addNewBtn.addEventListener("click", function (e) {

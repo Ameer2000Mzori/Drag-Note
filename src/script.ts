@@ -20,6 +20,8 @@ let createNewTextObj = [
 // global varibales
 
 // functions
+
+// this for adding new element
 const addNewNote = (addNewBtn, indx) => {
   let ourListUl = addNewBtn.parentElement.parentElement.children[1].children[0];
   console.log(ourListUl);
@@ -45,9 +47,21 @@ const addNewNote = (addNewBtn, indx) => {
   editBtn.appendChild(iconEditBtn);
   buttonsWrap.appendChild(editBtn);
 
+  newLi.setAttribute("contenteditable", "true");
   newLi.appendChild(buttonsWrap);
   ourListUl.appendChild(newLi);
+
+  // our eventlinsters:
+  editBtn.addEventListener("click", () => {
+    let editTextNew: any = editBtn.parentElement.parentElement;
+    console.log(editTextNew);
+    // editText(editTextNew);
+    editTextNew.focus();
+  });
 };
+
+// our edit text function
+// const editText = (editTextNew) => {};
 
 // eventlinsters
 addNewBtns.forEach((addNewBtn, indx) => {

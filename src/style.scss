@@ -104,6 +104,15 @@ body {
             font-family: $fontOne;
             font-size: 17px;
             overflow-x: auto;
+            text-align: center;
+            align-items: center;
+
+            .note-Text {
+              padding: 0;
+              margin: 0;
+              overflow: hidden;
+              width: 70%;
+            }
 
             .buttons-Wrap {
               overflow: hidden;
@@ -120,7 +129,7 @@ body {
                 border: black 2px;
                 margin: 2px;
 
-                li {
+                i {
                   color: black;
                 }
               }

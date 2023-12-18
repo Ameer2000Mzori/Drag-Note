@@ -41,7 +41,7 @@ const addNewNote = (addNewBtn, indx) => {
   const editBtn = document.createElement("button");
   editBtn.classList.add("edit-Btn");
   const iconEditBtn = document.createElement("i");
-  iconEditBtn.classList.add("fa-solid", "fa-trash");
+  iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
   editBtn.appendChild(iconEditBtn);
   buttonsWrap.appendChild(editBtn);
 

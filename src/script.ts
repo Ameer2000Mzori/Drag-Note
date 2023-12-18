@@ -182,15 +182,21 @@ const listOurData = () => {
         backLog.splice(index, 1);
         backLog.push(newOBj);
         localStorage.setItem("backLog", JSON.stringify(backLog));
-        backLog.splice(index, 1);
-        getBackLog;
       }
     });
 
-    // our delete button function :
+    // our delete button
     deleteBtn.addEventListener("click", () => {
-      let deleteTextNote =
+      let deleteText: any =
         editBtn.parentElement.parentElement?.firstChild?.textContent;
+      console.log(deleteText);
+
+      backLog = backLog.filter((textNote) => {
+        return textNote.text !== deleteText;
+      });
+      localStorage.setItem("backLog", JSON.stringify(backLog));
+      UlElementId[0].innerHTML = ``;
+      listOurData();
     });
   });
 
@@ -374,12 +380,9 @@ const listOurData = () => {
   });
 };
 
-// our delete text function
-// const deleteThisNote = () => {};
-
 // eventlinsters
 addNewBtns.forEach((addNewBtn, indx) => {
-  addNewBtn.addEventListener("click", (e) => {
+  addNewBtn.addEventListener("click", () => {
     addNewNote(addNewBtn, indx);
   });
 });

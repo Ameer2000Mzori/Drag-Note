@@ -159,14 +159,19 @@ var listOurData = function () {
                 backLog.splice(index, 1);
                 backLog.push(newOBj);
                 localStorage.setItem("backLog", JSON.stringify(backLog));
-                backLog.splice(index, 1);
-                getBackLog;
             }
         });
-        // our delete button function :
+        // our delete button
         deleteBtn.addEventListener("click", function () {
             var _a, _b;
-            var deleteTextNote = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+            var deleteText = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+            console.log(deleteText);
+            backLog = backLog.filter(function (textNote) {
+                return textNote.text !== deleteText;
+            });
+            localStorage.setItem("backLog", JSON.stringify(backLog));
+            UlElementId[0].innerHTML = "";
+            listOurData();
         });
     });
     progress.forEach(function (progressText, index) {
@@ -325,11 +330,9 @@ var listOurData = function () {
         });
     });
 };
-// our delete text function
-// const deleteThisNote = () => {};
 // eventlinsters
 addNewBtns.forEach(function (addNewBtn, indx) {
-    addNewBtn.addEventListener("click", function (e) {
+    addNewBtn.addEventListener("click", function () {
         addNewNote(addNewBtn, indx);
     });
 });

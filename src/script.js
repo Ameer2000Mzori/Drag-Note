@@ -143,6 +143,11 @@ var listOurData = function () {
             console.log(ourEditBtnIcon, index);
             editText(editTextNew, ourEditBtnIcon, 0, index);
         });
+        // our delete button function :
+        deleteBtn.addEventListener("click", function () {
+            var _a, _b;
+            var deleteTextNote = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+        });
     });
     progress.forEach(function (progressText, index) {
         var newLi = document.createElement("li");
@@ -244,52 +249,8 @@ var listOurData = function () {
     });
 };
 // our edit text function
-var editCount = 0;
-var editText = function (editTextNew, ourEditBtnIcon, indx, index) {
-    if (editCount === 0) {
-        ourEditBtnIcon.classList.add("fa-solid", "fa-check");
-        editCount++;
-        editTextNew.setAttribute("contenteditable", "true");
-        editTextNew.focus();
-    }
-    else {
-        ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
-        ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
-        editCount = 0;
-        editTextNew.removeAttribute("contenteditable");
-        editTextNew.blur();
-        var ourNewText = editTextNew.textContent;
-        console.log(ourNewText);
-        if (indx === 0) {
-            var newOBj = { text: ourNewText };
-            backLog.splice(index, 1);
-            backLog.push(newOBj);
-            console.log(backLog);
-            localStorage.setItem("backLog", JSON.stringify(backLog));
-        }
-        else if (indx === 1) {
-            var newOBj = { text: ourNewText };
-            progress.push(newOBj);
-            progress.splice(index, 1);
-            console.log(progress);
-            localStorage.setItem("progress", JSON.stringify(progress));
-        }
-        else if (indx === 2) {
-            var newOBj = { text: ourNewText };
-            complete.push(newOBj);
-            complete.splice(index, 1);
-            console.log(complete);
-            localStorage.setItem("complete", JSON.stringify(complete));
-        }
-        else if (indx === 3) {
-            var newOBj = { text: ourNewText };
-            onHold.push(newOBj);
-            onHold.splice(index, 1);
-            console.log(onHold);
-            localStorage.setItem("onHold", JSON.stringify(onHold));
-        }
-    }
-};
+// our delete text function
+// const deleteThisNote = () => {};
 // eventlinsters
 addNewBtns.forEach(function (addNewBtn, indx) {
     addNewBtn.addEventListener("click", function (e) {

@@ -166,6 +166,12 @@ const listOurData = () => {
       console.log(ourEditBtnIcon, index);
       editText(editTextNew, ourEditBtnIcon, 0, index);
     });
+
+    // our delete button function :
+    deleteBtn.addEventListener("click", () => {
+      let deleteTextNote =
+        editBtn.parentElement.parentElement?.firstChild?.textContent;
+    });
   });
 
   progress.forEach((progressText, index) => {
@@ -295,48 +301,9 @@ const listOurData = () => {
 };
 
 // our edit text function
-let editCount = 0;
-const editText = (editTextNew, ourEditBtnIcon, indx, index) => {
-  if (editCount === 0) {
-    ourEditBtnIcon.classList.add("fa-solid", "fa-check");
-    editCount++;
-    editTextNew.setAttribute("contenteditable", "true");
-    editTextNew.focus();
-  } else {
-    ourEditBtnIcon.classList.remove("fa-solid", "fa-check");
-    ourEditBtnIcon.classList.add("fa-regular", "fa-pen-to-square");
-    editCount = 0;
-    editTextNew.removeAttribute("contenteditable");
-    editTextNew.blur();
-    let ourNewText = editTextNew.textContent;
-    console.log(ourNewText);
-    if (indx === 0) {
-      let newOBj: any = { text: ourNewText };
-      backLog.splice(index, 1);
-      backLog.push(newOBj);
-      console.log(backLog);
-      localStorage.setItem("backLog", JSON.stringify(backLog));
-    } else if (indx === 1) {
-      let newOBj: any = { text: ourNewText };
-      progress.push(newOBj);
-      progress.splice(index, 1);
-      console.log(progress);
-      localStorage.setItem("progress", JSON.stringify(progress));
-    } else if (indx === 2) {
-      let newOBj: any = { text: ourNewText };
-      complete.push(newOBj);
-      complete.splice(index, 1);
-      console.log(complete);
-      localStorage.setItem("complete", JSON.stringify(complete));
-    } else if (indx === 3) {
-      let newOBj: any = { text: ourNewText };
-      onHold.push(newOBj);
-      onHold.splice(index, 1);
-      console.log(onHold);
-      localStorage.setItem("onHold", JSON.stringify(onHold));
-    }
-  }
-};
+
+// our delete text function
+// const deleteThisNote = () => {};
 
 // eventlinsters
 addNewBtns.forEach((addNewBtn, indx) => {

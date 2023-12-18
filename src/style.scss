@@ -109,11 +109,21 @@ body {
               overflow: hidden;
               position: absolute;
               right: 5px;
-              top: 15%;
+              top: 10%;
               padding: 0;
               margin: 0;
               display: flex;
               flex-direction: column;
+
+              button {
+                cursor: pointer;
+                border: black 2px;
+                margin: 2px;
+
+                li {
+                  color: black;
+                }
+              }
             }
           }
         }

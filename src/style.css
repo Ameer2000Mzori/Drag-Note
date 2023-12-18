@@ -113,9 +113,19 @@ body {
   overflow: hidden;
   position: absolute;
   right: 5px;
-  top: 15%;
+  top: 10%;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+}
+
+.header .head-Wrap #note-Box .todo-Lists ul li .buttons-Wrap button {
+  cursor: pointer;
+  border: black 2px;
+  margin: 2px;
+}
+
+.header .head-Wrap #note-Box .todo-Lists ul li .buttons-Wrap button li {
+  color: black;
 }

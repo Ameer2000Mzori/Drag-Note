@@ -15,6 +15,27 @@ var createNewTextObj = [
         text: "on hold?",
     },
 ];
+// our saved data objects :
+var backLog = [
+    {
+        text: "deit",
+    },
+];
+var progress = [
+    {
+        text: "20 projects",
+    },
+];
+var Complete = [
+    {
+        text: "50 projects",
+    },
+];
+var onHold = [
+    {
+        text: "going out",
+    },
+];
 // global varibales
 // functions
 // this for adding new element

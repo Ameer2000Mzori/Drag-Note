@@ -17,6 +17,29 @@ let createNewTextObj = [
   },
 ];
 
+// our saved data objects :
+
+let backLog = [
+  {
+    text: "deit",
+  },
+];
+let progress = [
+  {
+    text: "20 projects",
+  },
+];
+let Complete = [
+  {
+    text: "50 projects",
+  },
+];
+let onHold = [
+  {
+    text: "going out",
+  },
+];
+
 // global varibales
 
 // functions

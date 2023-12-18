@@ -23,9 +23,13 @@ var onHoldObj = [
 ];
 // global varibales
 // functions
+var addNewNote = function (addNewBtn) {
+    var ourListUl = addNewBtn.parentElement.parentElement.children[1].children[0];
+    console.log(ourListUl);
+};
 // eventlinsters
 addNewBtns.forEach(function (addNewBtn, indx) {
     addNewBtn.addEventListener("click", function (e) {
-        console.log(e, indx);
+        addNewNote(addNewBtn);
     });
 });

@@ -29,10 +29,14 @@ let onHoldObj = [
 // global varibales
 
 // functions
+const addNewNote = (addNewBtn) => {
+  let ourListUl = addNewBtn.parentElement.parentElement.children[1].children[0];
+  console.log(ourListUl);
+};
 
 // eventlinsters
 addNewBtns.forEach((addNewBtn, indx) => {
   addNewBtn.addEventListener("click", (e) => {
-    console.log(e, indx);
+    addNewNote(addNewBtn);
   });
 });

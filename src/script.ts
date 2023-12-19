@@ -1,6 +1,9 @@
 // selecting our elements
 const addNewBtns = document.querySelectorAll("#add-New-Btn-Id");
 const UlElementId = document.querySelectorAll(".ul-Element-Id");
+const moveList = document.getElementsByClassName("move-List")[0];
+const closeBtn = document.getElementsByClassName("close-Btn")[0];
+
 // our data objects for our each card
 let createNewTextObj = [
   {
@@ -212,11 +215,13 @@ const listOurData = () => {
 
     // our move button
     moveBtn.addEventListener("click", () => {
-      let moveTextNote: any =
-        editBtn.parentElement.parentElement?.firstChild?.textContent;
-      console.log(moveTextNote);
-
-      // creating our list of move names
+      if (moveList.classList.contains("active")) {
+        moveList.classList.remove("active");
+        // creating our list of move names
+        let moveTextNote: any =
+          editBtn.parentElement.parentElement?.firstChild?.textContent;
+        console.log(moveTextNote);
+      }
     });
   });
 
@@ -450,6 +455,10 @@ addNewBtns.forEach((addNewBtn, indx) => {
   addNewBtn.addEventListener("click", () => {
     addNewNote(addNewBtn, indx);
   });
+});
+
+closeBtn.addEventListener("click", () => {
+  moveList.classList.add("active");
 });
 
 listOurData();

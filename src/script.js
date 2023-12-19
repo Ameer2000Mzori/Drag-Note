@@ -1,6 +1,8 @@
 // selecting our elements
 var addNewBtns = document.querySelectorAll("#add-New-Btn-Id");
 var UlElementId = document.querySelectorAll(".ul-Element-Id");
+var moveList = document.getElementsByClassName("move-List")[0];
+var closeBtn = document.getElementsByClassName("close-Btn")[0];
 // our data objects for our each card
 var createNewTextObj = [
     {
@@ -185,9 +187,12 @@ var listOurData = function () {
         // our move button
         moveBtn.addEventListener("click", function () {
             var _a, _b;
-            var moveTextNote = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
-            console.log(moveTextNote);
-            // creating our list of move names
+            if (moveList.classList.contains("active")) {
+                moveList.classList.remove("active");
+                // creating our list of move names
+                var moveTextNote = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+                console.log(moveTextNote);
+            }
         });
     });
     progress.forEach(function (progressText, index) {
@@ -390,5 +395,8 @@ addNewBtns.forEach(function (addNewBtn, indx) {
     addNewBtn.addEventListener("click", function () {
         addNewNote(addNewBtn, indx);
     });
+});
+closeBtn.addEventListener("click", function () {
+    moveList.classList.add("active");
 });
 listOurData();

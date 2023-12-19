@@ -196,9 +196,7 @@ var listOurData = function () {
                 buttonOne.textContent = "Move to Progres...";
                 buttonList.appendChild(buttonOne);
                 buttonOne.addEventListener("click", function () {
-                    backLog = backLog.filter(function (text) {
-                        text.text !== moveTextNote_1;
-                    });
+                    backLog.splice(index, 1);
                     var moveToProgress = {
                         text: moveTextNote_1,
                     };
@@ -214,9 +212,7 @@ var listOurData = function () {
                 buttonTwo.textContent = "Move to Comple...";
                 buttonList.appendChild(buttonTwo);
                 buttonTwo.addEventListener("click", function () {
-                    backLog = backLog.filter(function (text) {
-                        text.text !== moveTextNote_1;
-                    });
+                    backLog.splice(index, 1);
                     var moveToComplete = {
                         text: moveTextNote_1,
                     };
@@ -232,9 +228,7 @@ var listOurData = function () {
                 buttonThree.textContent = "Move to On Ho..";
                 buttonList.appendChild(buttonThree);
                 buttonThree.addEventListener("click", function () {
-                    backLog = backLog.filter(function (text) {
-                        text.text !== moveTextNote_1;
-                    });
+                    backLog.splice(index, 1);
                     var moveToOnHold = {
                         text: moveTextNote_1,
                     };
@@ -328,9 +322,7 @@ var listOurData = function () {
                 buttonOne.textContent = "Move to BackL...";
                 buttonList.appendChild(buttonOne);
                 buttonOne.addEventListener("click", function () {
-                    progress = progress.filter(function (text) {
-                        text.text !== moveTextNote_2;
-                    });
+                    progress.splice(index, 1);
                     var moveToBackLog = {
                         text: moveTextNote_2,
                     };
@@ -346,9 +338,7 @@ var listOurData = function () {
                 buttonTwo.textContent = "Move to Comple...";
                 buttonList.appendChild(buttonTwo);
                 buttonTwo.addEventListener("click", function () {
-                    progress = progress.filter(function (text) {
-                        text.text !== moveTextNote_2;
-                    });
+                    progress.splice(index, 1);
                     var moveToComplete = {
                         text: moveTextNote_2,
                     };
@@ -364,9 +354,7 @@ var listOurData = function () {
                 buttonThree.textContent = "Move to On Ho..";
                 buttonList.appendChild(buttonThree);
                 buttonThree.addEventListener("click", function () {
-                    progress = progress.filter(function (text) {
-                        text.text !== moveTextNote_2;
-                    });
+                    progress.splice(index, 1);
                     var moveToOnHold = {
                         text: moveTextNote_2,
                     };
@@ -446,6 +434,7 @@ var listOurData = function () {
             localStorage.setItem("complete", JSON.stringify(complete));
             UpdateScreen();
         });
+        // move btn logic
         moveBtn.addEventListener("click", function () {
             var _a, _b;
             if (moveList.classList.contains("active")) {
@@ -459,9 +448,7 @@ var listOurData = function () {
                 buttonOne.textContent = "Move to BackL...";
                 buttonList.appendChild(buttonOne);
                 buttonOne.addEventListener("click", function () {
-                    complete = complete.filter(function (text) {
-                        text.text !== moveTextNote_3;
-                    });
+                    complete.splice(index, 1);
                     var moveToBackLog = {
                         text: moveTextNote_3,
                     };
@@ -474,12 +461,10 @@ var listOurData = function () {
                 });
                 var buttonTwo = document.createElement("button");
                 buttonTwo.classList.add("button-Two");
-                buttonTwo.textContent = "Move to Comple...";
+                buttonTwo.textContent = "Move to Progre...";
                 buttonList.appendChild(buttonTwo);
                 buttonTwo.addEventListener("click", function () {
-                    complete = complete.filter(function (text) {
-                        text.text !== moveTextNote_3;
-                    });
+                    complete.splice(index, 1);
                     var moveToOrogress = {
                         text: moveTextNote_3,
                     };
@@ -495,9 +480,7 @@ var listOurData = function () {
                 buttonThree.textContent = "Move to On Ho..";
                 buttonList.appendChild(buttonThree);
                 buttonThree.addEventListener("click", function () {
-                    complete = complete.filter(function (text) {
-                        text.text !== moveTextNote_3;
-                    });
+                    complete.splice(index, 1);
                     var moveToOnHold = {
                         text: moveTextNote_3,
                     };
@@ -575,6 +558,65 @@ var listOurData = function () {
             });
             localStorage.setItem("onHold", JSON.stringify(onHold));
             UpdateScreen();
+        });
+        // move btn logic :
+        moveBtn.addEventListener("click", function () {
+            var _a, _b;
+            if (moveList.classList.contains("active")) {
+                moveList.classList.remove("active");
+                // getting the data of the note we clicked
+                var moveTextNote_4 = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+                console.log(moveTextNote_4);
+                // creating our list dynamiclly
+                var buttonOne = document.createElement("button");
+                buttonOne.classList.add("button-One");
+                buttonOne.textContent = "Move to BackL...";
+                buttonList.appendChild(buttonOne);
+                buttonOne.addEventListener("click", function () {
+                    onHold.splice(index, 1);
+                    var moveToBackLog = {
+                        text: moveTextNote_4,
+                    };
+                    backLog.push(moveToBackLog);
+                    localStorage.setItem("backLog", JSON.stringify(backLog));
+                    localStorage.setItem("onHold", JSON.stringify(onHold));
+                    UpdateScreen();
+                    moveList.classList.add("active");
+                    buttonList.innerHTML = "";
+                });
+                var buttonTwo = document.createElement("button");
+                buttonTwo.classList.add("button-Two");
+                buttonTwo.textContent = "Move to Progres...";
+                buttonList.appendChild(buttonTwo);
+                buttonTwo.addEventListener("click", function () {
+                    onHold.splice(index, 1);
+                    var moveToOrogress = {
+                        text: moveTextNote_4,
+                    };
+                    progress.push(moveToOrogress);
+                    localStorage.setItem("progress", JSON.stringify(progress));
+                    localStorage.setItem("onHold", JSON.stringify(onHold));
+                    UpdateScreen();
+                    moveList.classList.add("active");
+                    buttonList.innerHTML = "";
+                });
+                var buttonThree = document.createElement("button");
+                buttonThree.classList.add("button-Three");
+                buttonThree.textContent = "Move to Compele..";
+                buttonList.appendChild(buttonThree);
+                buttonThree.addEventListener("click", function () {
+                    onHold.splice(index, 1);
+                    var moveToComplete = {
+                        text: moveTextNote_4,
+                    };
+                    complete.push(moveToComplete);
+                    localStorage.setItem("complete", JSON.stringify(complete));
+                    localStorage.setItem("onHold", JSON.stringify(onHold));
+                    UpdateScreen();
+                    moveList.classList.add("active");
+                    buttonList.innerHTML = "";
+                });
+            }
         });
     });
 };

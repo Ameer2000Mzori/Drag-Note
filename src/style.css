@@ -245,3 +245,9 @@ body {
 .move-List.active {
   display: none;
 }
+
+.button-List {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

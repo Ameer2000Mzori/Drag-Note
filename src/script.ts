@@ -3,6 +3,7 @@ const addNewBtns = document.querySelectorAll("#add-New-Btn-Id");
 const UlElementId = document.querySelectorAll(".ul-Element-Id");
 const moveList = document.getElementsByClassName("move-List")[0];
 const closeBtn = document.getElementsByClassName("close-Btn")[0];
+const buttonList = document.getElementsByClassName("button-List")[0];
 
 // our data objects for our each card
 let createNewTextObj = [
@@ -226,17 +227,17 @@ const listOurData = () => {
         const buttonOne = document.createElement("button");
         buttonOne.classList.add("button-One");
         buttonOne.textContent = `Move to Progres...`;
-        moveList.appendChild(buttonOne);
+        buttonList.appendChild(buttonOne);
 
         const buttonTwo = document.createElement("button");
         buttonTwo.classList.add("button-Two");
         buttonTwo.textContent = `Move to Comple...`;
-        moveList.appendChild(buttonTwo);
+        buttonList.appendChild(buttonTwo);
 
         const buttonThree = document.createElement("button");
         buttonThree.classList.add("button-Three");
         buttonThree.textContent = `Move to On Ho..`;
-        moveList.appendChild(buttonThree);
+        buttonList.appendChild(buttonThree);
       }
     });
   });
@@ -475,6 +476,7 @@ addNewBtns.forEach((addNewBtn, indx) => {
 
 closeBtn.addEventListener("click", () => {
   moveList.classList.add("active");
+  buttonList.innerHTML = ``;
 });
 
 listOurData();

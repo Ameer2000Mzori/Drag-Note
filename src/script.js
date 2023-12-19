@@ -3,6 +3,7 @@ var addNewBtns = document.querySelectorAll("#add-New-Btn-Id");
 var UlElementId = document.querySelectorAll(".ul-Element-Id");
 var moveList = document.getElementsByClassName("move-List")[0];
 var closeBtn = document.getElementsByClassName("close-Btn")[0];
+var buttonList = document.getElementsByClassName("button-List")[0];
 // our data objects for our each card
 var createNewTextObj = [
     {
@@ -196,15 +197,15 @@ var listOurData = function () {
                 var buttonOne = document.createElement("button");
                 buttonOne.classList.add("button-One");
                 buttonOne.textContent = "Move to Progres...";
-                moveList.appendChild(buttonOne);
+                buttonList.appendChild(buttonOne);
                 var buttonTwo = document.createElement("button");
                 buttonTwo.classList.add("button-Two");
                 buttonTwo.textContent = "Move to Comple...";
-                moveList.appendChild(buttonTwo);
+                buttonList.appendChild(buttonTwo);
                 var buttonThree = document.createElement("button");
                 buttonThree.classList.add("button-Three");
                 buttonThree.textContent = "Move to On Ho..";
-                moveList.appendChild(buttonThree);
+                buttonList.appendChild(buttonThree);
             }
         });
     });
@@ -411,5 +412,6 @@ addNewBtns.forEach(function (addNewBtn, indx) {
 });
 closeBtn.addEventListener("click", function () {
     moveList.classList.add("active");
+    buttonList.innerHTML = "";
 });
 listOurData();

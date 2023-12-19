@@ -468,6 +468,13 @@ const listOurData = () => {
     editBtn.appendChild(iconEditBtn);
     buttonsWrap.appendChild(editBtn);
 
+    const moveBtn = document.createElement("button");
+    moveBtn.classList.add("move-Btn");
+    const iconMoveBtn = document.createElement("i");
+    iconMoveBtn.classList.add("fa-solid", "fa-up-down-left-right");
+    moveBtn.appendChild(iconMoveBtn);
+    buttonsWrap.appendChild(moveBtn);
+
     newLi.appendChild(noteText);
     newLi.appendChild(buttonsWrap);
 

@@ -378,20 +378,20 @@ const listOurData = () => {
         // creating our list dynamiclly
         const buttonOne = document.createElement("button");
         buttonOne.classList.add("button-One");
-        buttonOne.textContent = `Move to Progres...`;
+        buttonOne.textContent = `Move to BackL...`;
         buttonList.appendChild(buttonOne);
         buttonOne.addEventListener("click", () => {
-          backLog = backLog.filter((text) => {
+          progress = progress.filter((text) => {
             text.text !== moveTextNote;
           });
 
-          let moveToProgress = {
+          let moveToBackLog = {
             text: moveTextNote,
           };
 
-          progress.push(moveToProgress);
-          localStorage.setItem("progress", JSON.stringify(progress));
+          backLog.push(moveToBackLog);
           localStorage.setItem("backLog", JSON.stringify(backLog));
+          localStorage.setItem("progress", JSON.stringify(progress));
           UpdateScreen();
           moveList.classList.add("active");
           buttonList.innerHTML = ``;
@@ -403,7 +403,7 @@ const listOurData = () => {
         buttonList.appendChild(buttonTwo);
 
         buttonTwo.addEventListener("click", () => {
-          backLog = backLog.filter((text) => {
+          progress = progress.filter((text) => {
             text.text !== moveTextNote;
           });
 
@@ -413,7 +413,7 @@ const listOurData = () => {
 
           complete.push(moveToComplete);
           localStorage.setItem("complete", JSON.stringify(complete));
-          localStorage.setItem("backLog", JSON.stringify(backLog));
+          localStorage.setItem("progress", JSON.stringify(progress));
           UpdateScreen();
           moveList.classList.add("active");
           buttonList.innerHTML = ``;
@@ -425,7 +425,7 @@ const listOurData = () => {
         buttonList.appendChild(buttonThree);
 
         buttonThree.addEventListener("click", () => {
-          backLog = backLog.filter((text) => {
+          progress = progress.filter((text) => {
             text.text !== moveTextNote;
           });
 
@@ -435,7 +435,7 @@ const listOurData = () => {
 
           onHold.push(moveToOnHold);
           localStorage.setItem("onHold", JSON.stringify(onHold));
-          localStorage.setItem("backLog", JSON.stringify(backLog));
+          localStorage.setItem("progress", JSON.stringify(progress));
           UpdateScreen();
           moveList.classList.add("active");
           buttonList.innerHTML = ``;

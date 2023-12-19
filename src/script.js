@@ -325,18 +325,18 @@ var listOurData = function () {
                 // creating our list dynamiclly
                 var buttonOne = document.createElement("button");
                 buttonOne.classList.add("button-One");
-                buttonOne.textContent = "Move to Progres...";
+                buttonOne.textContent = "Move to BackL...";
                 buttonList.appendChild(buttonOne);
                 buttonOne.addEventListener("click", function () {
-                    backLog = backLog.filter(function (text) {
+                    progress = progress.filter(function (text) {
                         text.text !== moveTextNote_2;
                     });
-                    var moveToProgress = {
+                    var moveToBackLog = {
                         text: moveTextNote_2,
                     };
-                    progress.push(moveToProgress);
-                    localStorage.setItem("progress", JSON.stringify(progress));
+                    backLog.push(moveToBackLog);
                     localStorage.setItem("backLog", JSON.stringify(backLog));
+                    localStorage.setItem("progress", JSON.stringify(progress));
                     UpdateScreen();
                     moveList.classList.add("active");
                     buttonList.innerHTML = "";
@@ -346,7 +346,7 @@ var listOurData = function () {
                 buttonTwo.textContent = "Move to Comple...";
                 buttonList.appendChild(buttonTwo);
                 buttonTwo.addEventListener("click", function () {
-                    backLog = backLog.filter(function (text) {
+                    progress = progress.filter(function (text) {
                         text.text !== moveTextNote_2;
                     });
                     var moveToComplete = {
@@ -354,7 +354,7 @@ var listOurData = function () {
                     };
                     complete.push(moveToComplete);
                     localStorage.setItem("complete", JSON.stringify(complete));
-                    localStorage.setItem("backLog", JSON.stringify(backLog));
+                    localStorage.setItem("progress", JSON.stringify(progress));
                     UpdateScreen();
                     moveList.classList.add("active");
                     buttonList.innerHTML = "";
@@ -364,7 +364,7 @@ var listOurData = function () {
                 buttonThree.textContent = "Move to On Ho..";
                 buttonList.appendChild(buttonThree);
                 buttonThree.addEventListener("click", function () {
-                    backLog = backLog.filter(function (text) {
+                    progress = progress.filter(function (text) {
                         text.text !== moveTextNote_2;
                     });
                     var moveToOnHold = {
@@ -372,7 +372,7 @@ var listOurData = function () {
                     };
                     onHold.push(moveToOnHold);
                     localStorage.setItem("onHold", JSON.stringify(onHold));
-                    localStorage.setItem("backLog", JSON.stringify(backLog));
+                    localStorage.setItem("progress", JSON.stringify(progress));
                     UpdateScreen();
                     moveList.classList.add("active");
                     buttonList.innerHTML = "";

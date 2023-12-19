@@ -217,10 +217,26 @@ const listOurData = () => {
     moveBtn.addEventListener("click", () => {
       if (moveList.classList.contains("active")) {
         moveList.classList.remove("active");
-        // creating our list of move names
+        // getting the data of the note we clicked
         let moveTextNote: any =
           editBtn.parentElement.parentElement?.firstChild?.textContent;
         console.log(moveTextNote);
+
+        // creating our list dynamiclly
+        const buttonOne = document.createElement("button");
+        buttonOne.classList.add("button-One");
+        buttonOne.textContent = `Move to Progres...`;
+        moveList.appendChild(buttonOne);
+
+        const buttonTwo = document.createElement("button");
+        buttonTwo.classList.add("button-Two");
+        buttonTwo.textContent = `Move to Comple...`;
+        moveList.appendChild(buttonTwo);
+
+        const buttonThree = document.createElement("button");
+        buttonThree.classList.add("button-Three");
+        buttonThree.textContent = `Move to On Ho..`;
+        moveList.appendChild(buttonThree);
       }
     });
   });

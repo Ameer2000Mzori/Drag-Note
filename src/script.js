@@ -189,9 +189,22 @@ var listOurData = function () {
             var _a, _b;
             if (moveList.classList.contains("active")) {
                 moveList.classList.remove("active");
-                // creating our list of move names
+                // getting the data of the note we clicked
                 var moveTextNote = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
                 console.log(moveTextNote);
+                // creating our list dynamiclly
+                var buttonOne = document.createElement("button");
+                buttonOne.classList.add("button-One");
+                buttonOne.textContent = "Move to Progres...";
+                moveList.appendChild(buttonOne);
+                var buttonTwo = document.createElement("button");
+                buttonTwo.classList.add("button-Two");
+                buttonTwo.textContent = "Move to Comple...";
+                moveList.appendChild(buttonTwo);
+                var buttonThree = document.createElement("button");
+                buttonThree.classList.add("button-Three");
+                buttonThree.textContent = "Move to On Ho..";
+                moveList.appendChild(buttonThree);
             }
         });
     });

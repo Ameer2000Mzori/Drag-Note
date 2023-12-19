@@ -217,12 +217,31 @@ body {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  background-color: rgb(151, 144, 144);
+  background-color: rgba(255, 241, 241, 0.521);
   color: white;
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 150px;
   height: 200px;
   justify-content: space-evenly;
   font-family: "Roboto", sans-serif;
-  border-radius: 2rem;
+  border-radius: 1rem;
+  border: solid rgb(122, 120, 120) 3px;
+}
+
+.move-List .title-Btn-Wrap {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  width: 80%;
+  height: 10%;
+}
+
+.move-List .title-Btn-Wrap .close-Btn {
+  cursor: pointer;
+}
+
+.move-List.active {
+  display: none;
 }

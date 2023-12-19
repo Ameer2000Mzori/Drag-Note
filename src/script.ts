@@ -117,6 +117,7 @@ const addNewNote = (addNewBtn, indx) => {
         console.log(onHold);
         localStorage.setItem("onHold", JSON.stringify(onHold));
       }
+      UpdateScreen();
     }
   });
 
@@ -207,11 +208,7 @@ const listOurData = () => {
         return textNote.text !== deleteText;
       });
       localStorage.setItem("backLog", JSON.stringify(backLog));
-      UlElementId[0].innerHTML = ``;
-      UlElementId[1].innerHTML = ``;
-      UlElementId[2].innerHTML = ``;
-      UlElementId[3].innerHTML = ``;
-      listOurData();
+      UpdateScreen();
     });
 
     // our move button
@@ -228,16 +225,66 @@ const listOurData = () => {
         buttonOne.classList.add("button-One");
         buttonOne.textContent = `Move to Progres...`;
         buttonList.appendChild(buttonOne);
+        buttonOne.addEventListener("click", () => {
+          backLog = backLog.filter((text) => {
+            text.text !== moveTextNote;
+          });
+
+          let moveToProgress = {
+            text: moveTextNote,
+          };
+
+          progress.push(moveToProgress);
+          localStorage.setItem("progress", JSON.stringify(progress));
+          localStorage.setItem("backLog", JSON.stringify(backLog));
+          UpdateScreen();
+          moveList.classList.add("active");
+          buttonList.innerHTML = ``;
+        });
 
         const buttonTwo = document.createElement("button");
         buttonTwo.classList.add("button-Two");
         buttonTwo.textContent = `Move to Comple...`;
         buttonList.appendChild(buttonTwo);
 
+        buttonTwo.addEventListener("click", () => {
+          backLog = backLog.filter((text) => {
+            text.text !== moveTextNote;
+          });
+
+          let moveToComplete = {
+            text: moveTextNote,
+          };
+
+          complete.push(moveToComplete);
+          localStorage.setItem("complete", JSON.stringify(complete));
+          localStorage.setItem("backLog", JSON.stringify(backLog));
+          UpdateScreen();
+          moveList.classList.add("active");
+          buttonList.innerHTML = ``;
+        });
+
         const buttonThree = document.createElement("button");
         buttonThree.classList.add("button-Three");
         buttonThree.textContent = `Move to On Ho..`;
         buttonList.appendChild(buttonThree);
+
+        buttonThree.addEventListener("click", () => {
+          backLog = backLog.filter((text) => {
+            text.text !== moveTextNote;
+          });
+
+          let moveToOnHold = {
+            text: moveTextNote,
+          };
+
+          onHold.push(moveToOnHold);
+          localStorage.setItem("onHold", JSON.stringify(onHold));
+          localStorage.setItem("backLog", JSON.stringify(backLog));
+          UpdateScreen();
+          moveList.classList.add("active");
+          buttonList.innerHTML = ``;
+        });
       }
     });
   });
@@ -310,11 +357,7 @@ const listOurData = () => {
         return textNote.text !== deleteText;
       });
       localStorage.setItem("progress", JSON.stringify(progress));
-      UlElementId[0].innerHTML = ``;
-      UlElementId[1].innerHTML = ``;
-      UlElementId[2].innerHTML = ``;
-      UlElementId[3].innerHTML = ``;
-      listOurData();
+      UpdateScreen();
     });
   });
 
@@ -385,11 +428,7 @@ const listOurData = () => {
         return textNote.text !== deleteText;
       });
       localStorage.setItem("complete", JSON.stringify(complete));
-      UlElementId[0].innerHTML = ``;
-      UlElementId[1].innerHTML = ``;
-      UlElementId[2].innerHTML = ``;
-      UlElementId[3].innerHTML = ``;
-      listOurData();
+      UpdateScreen();
     });
   });
 
@@ -458,13 +497,18 @@ const listOurData = () => {
         return textNote.text !== deleteText;
       });
       localStorage.setItem("onHold", JSON.stringify(onHold));
-      UlElementId[0].innerHTML = ``;
-      UlElementId[1].innerHTML = ``;
-      UlElementId[2].innerHTML = ``;
-      UlElementId[3].innerHTML = ``;
-      listOurData();
+      UpdateScreen();
     });
   });
+};
+
+// UpdateScreen function
+const UpdateScreen = () => {
+  UlElementId[0].innerHTML = ``;
+  UlElementId[1].innerHTML = ``;
+  UlElementId[2].innerHTML = ``;
+  UlElementId[3].innerHTML = ``;
+  listOurData();
 };
 
 // eventlinsters

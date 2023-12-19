@@ -530,6 +530,12 @@ var listOurData = function () {
         iconEditBtn.classList.add("fa-regular", "fa-pen-to-square");
         editBtn.appendChild(iconEditBtn);
         buttonsWrap.appendChild(editBtn);
+        var moveBtn = document.createElement("button");
+        moveBtn.classList.add("move-Btn");
+        var iconMoveBtn = document.createElement("i");
+        iconMoveBtn.classList.add("fa-solid", "fa-up-down-left-right");
+        moveBtn.appendChild(iconMoveBtn);
+        buttonsWrap.appendChild(moveBtn);
         newLi.appendChild(noteText);
         newLi.appendChild(buttonsWrap);
         UlElementId[3].appendChild(newLi);

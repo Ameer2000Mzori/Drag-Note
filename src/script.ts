@@ -520,6 +520,82 @@ const listOurData = () => {
       localStorage.setItem("complete", JSON.stringify(complete));
       UpdateScreen();
     });
+
+    moveBtn.addEventListener("click", () => {
+      if (moveList.classList.contains("active")) {
+        moveList.classList.remove("active");
+        // getting the data of the note we clicked
+        let moveTextNote: any =
+          editBtn.parentElement.parentElement?.firstChild?.textContent;
+        console.log(moveTextNote);
+
+        // creating our list dynamiclly
+        const buttonOne = document.createElement("button");
+        buttonOne.classList.add("button-One");
+        buttonOne.textContent = `Move to BackL...`;
+        buttonList.appendChild(buttonOne);
+        buttonOne.addEventListener("click", () => {
+          complete = complete.filter((text) => {
+            text.text !== moveTextNote;
+          });
+
+          let moveToBackLog = {
+            text: moveTextNote,
+          };
+
+          backLog.push(moveToBackLog);
+          localStorage.setItem("backLog", JSON.stringify(backLog));
+          localStorage.setItem("complete", JSON.stringify(complete));
+          UpdateScreen();
+          moveList.classList.add("active");
+          buttonList.innerHTML = ``;
+        });
+
+        const buttonTwo = document.createElement("button");
+        buttonTwo.classList.add("button-Two");
+        buttonTwo.textContent = `Move to Comple...`;
+        buttonList.appendChild(buttonTwo);
+
+        buttonTwo.addEventListener("click", () => {
+          complete = complete.filter((text) => {
+            text.text !== moveTextNote;
+          });
+
+          let moveToOrogress = {
+            text: moveTextNote,
+          };
+
+          progress.push(moveToOrogress);
+          localStorage.setItem("progress", JSON.stringify(progress));
+          localStorage.setItem("complete", JSON.stringify(complete));
+          UpdateScreen();
+          moveList.classList.add("active");
+          buttonList.innerHTML = ``;
+        });
+
+        const buttonThree = document.createElement("button");
+        buttonThree.classList.add("button-Three");
+        buttonThree.textContent = `Move to On Ho..`;
+        buttonList.appendChild(buttonThree);
+
+        buttonThree.addEventListener("click", () => {
+          complete = complete.filter((text) => {
+            text.text !== moveTextNote;
+          });
+
+          let moveToOnHold = {
+            text: moveTextNote,
+          };
+
+          onHold.push(moveToOnHold);
+          localStorage.setItem("onHold", JSON.stringify(onHold));
+          localStorage.setItem("complete", JSON.stringify(complete));
+          UpdateScreen();
+          moveList.classList.add("active");
+          buttonList.innerHTML = ``;
+        });
+      }
+    });
   });
 
   onHold.forEach((onHoldText, index) => {

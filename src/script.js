@@ -446,6 +446,70 @@ var listOurData = function () {
             localStorage.setItem("complete", JSON.stringify(complete));
             UpdateScreen();
         });
+        moveBtn.addEventListener("click", function () {
+            var _a, _b;
+            if (moveList.classList.contains("active")) {
+                moveList.classList.remove("active");
+                // getting the data of the note we clicked
+                var moveTextNote_3 = (_b = (_a = editBtn.parentElement.parentElement) === null || _a === void 0 ? void 0 : _a.firstChild) === null || _b === void 0 ? void 0 : _b.textContent;
+                console.log(moveTextNote_3);
+                // creating our list dynamiclly
+                var buttonOne = document.createElement("button");
+                buttonOne.classList.add("button-One");
+                buttonOne.textContent = "Move to BackL...";
+                buttonList.appendChild(buttonOne);
+                buttonOne.addEventListener("click", function () {
+                    complete = complete.filter(function (text) {
+                        text.text !== moveTextNote_3;
+                    });
+                    var moveToBackLog = {
+                        text: moveTextNote_3,
+                    };
+                    backLog.push(moveToBackLog);
+                    localStorage.setItem("backLog", JSON.stringify(backLog));
+                    localStorage.setItem("complete", JSON.stringify(complete));
+                    UpdateScreen();
+                    moveList.classList.add("active");
+                    buttonList.innerHTML = "";
+                });
+                var buttonTwo = document.createElement("button");
+                buttonTwo.classList.add("button-Two");
+                buttonTwo.textContent = "Move to Comple...";
+                buttonList.appendChild(buttonTwo);
+                buttonTwo.addEventListener("click", function () {
+                    complete = complete.filter(function (text) {
+                        text.text !== moveTextNote_3;
+                    });
+                    var moveToOrogress = {
+                        text: moveTextNote_3,
+                    };
+                    progress.push(moveToOrogress);
+                    localStorage.setItem("progress", JSON.stringify(progress));
+                    localStorage.setItem("complete", JSON.stringify(complete));
+                    UpdateScreen();
+                    moveList.classList.add("active");
+                    buttonList.innerHTML = "";
+                });
+                var buttonThree = document.createElement("button");
+                buttonThree.classList.add("button-Three");
+                buttonThree.textContent = "Move to On Ho..";
+                buttonList.appendChild(buttonThree);
+                buttonThree.addEventListener("click", function () {
+                    complete = complete.filter(function (text) {
+                        text.text !== moveTextNote_3;
+                    });
+                    var moveToOnHold = {
+                        text: moveTextNote_3,
+                    };
+                    onHold.push(moveToOnHold);
+                    localStorage.setItem("onHold", JSON.stringify(onHold));
+                    localStorage.setItem("complete", JSON.stringify(complete));
+                    UpdateScreen();
+                    moveList.classList.add("active");
+                    buttonList.innerHTML = "";
+                });
+            }
+        });
     });
     onHold.forEach(function (onHoldText, index) {
         var newLi = document.createElement("li");
